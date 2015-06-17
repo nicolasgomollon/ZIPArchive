@@ -1,44 +1,44 @@
 //
 //  ZipArchive.h
-//  
+//  ZipArchive
 //
-//  Created by aish on 08-9-11.
-//  acsolu@gmail.com
-//  Copyright 2008  Inc. All rights reserved.
+//  Objective-C code Copyright (c) 2008 aish (acsolu@gmail.com). All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-#include "minizip/zip.h"
-#include "minizip/unzip.h"
+#include "zip.h"
+#include "unzip.h"
 
 
 @protocol ZipArchiveDelegate <NSObject>
+
 @optional
--(void) ErrorMessage:(NSString*) msg;
--(BOOL) OverWriteOperation:(NSString*) file;
+- (void)errorMessage:(NSString *)msg;
+- (BOOL)overwriteOperation:(NSString *)file;
 
 @end
 
 
 @interface ZipArchive : NSObject {
 @private
-	zipFile		_zipFile;
-	unzFile		_unzFile;
+	zipFile _zipFile;
+	unzFile _unzFile;
 	
-	NSString*   _password;
-	id			_delegate;
+	NSString *_password;
+	id _delegate;
 }
 
 @property (nonatomic, retain) id delegate;
 
--(BOOL) CreateZipFile2:(NSString*) zipFile;
--(BOOL) CreateZipFile2:(NSString*) zipFile Password:(NSString*) password;
--(BOOL) addFileToZip:(NSString*) file newname:(NSString*) newname;
--(BOOL) CloseZipFile2;
+- (BOOL)createZipFile:(NSString *)zipFile;
+- (BOOL)createZipFile:(NSString *)zipFile password:(NSString *)password;
+- (BOOL)addFileToZip:(NSString *)file newname:(NSString *)newname;
+- (BOOL)closeZipFile;
 
--(BOOL) UnzipOpenFile:(NSString*) zipFile;
--(BOOL) UnzipOpenFile:(NSString*) zipFile Password:(NSString*) password;
--(BOOL) UnzipFileTo:(NSString*) path overWrite:(BOOL) overwrite;
--(BOOL) UnzipCloseFile;
+- (BOOL)unzipOpenFile:(NSString *)zipFile;
+- (BOOL)unzipOpenFile:(NSString *)zipFile password:(NSString *)password;
+- (BOOL)unzipFileTo:(NSString *)path overwrite:(BOOL)overwrite;
+- (BOOL)unzipCloseFile;
+
 @end
