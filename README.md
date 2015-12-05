@@ -15,7 +15,7 @@ This is a cleaned up and modernized fork of [ZipArchive by Aish](https://code.go
 Objective-C:
 ```objective-c
 // Create ZIP file.
-ZipArchive *zipArchive = [[ZipArchive alloc] initWithFileURL: myZipFileURL];
+ZipArchive *zipArchive = [[ZipArchive alloc] initWithFileURL:myZipFileURL];
 
 [zipArchive addFileToArchive:someFileURL];
 [zipArchive addFileToArchive:anotherFileURL directoryPath:@"Some Folder"];

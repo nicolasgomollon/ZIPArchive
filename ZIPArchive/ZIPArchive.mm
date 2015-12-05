@@ -22,11 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance Methods
 
-- (id)init {
+- (instancetype)init {
 	return nil;
 }
 
-- (id)initWithFileURL:(NSURL *)fileURL {
+- (instancetype)initWithFileURL:(NSURL *)fileURL {
 	if (self = [super init]) {
 		zipArchive = zipOpen(fileURL.path.UTF8String, 0);
 		if (zipArchive == NULL) { return nil; }
@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 	NSError *error = nil;
 	NSDictionary *attr = [[NSFileManager defaultManager] attributesOfItemAtPath:fileURL.path error:&error];
 	if ((error == nil) && attr) {
-		NSDate *fileDate = (NSDate *)[attr objectForKey:NSFileModificationDate];
+		NSDate *fileDate = (NSDate *)attr[NSFileModificationDate];
 		if (fileDate) {
 			zipInfo.dosDate = [fileDate timeIntervalSinceDate:[ZIPArchive date1980]];
 		}

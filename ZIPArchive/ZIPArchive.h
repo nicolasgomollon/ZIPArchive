@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Instance Methods
 
-- (id)initWithFileURL:(NSURL *)fileURL;
+- (instancetype)initWithFileURL:(NSURL *)fileURL;
 - (BOOL)addFileToArchive:(NSURL *)fileURL;
 - (BOOL)addFileToArchive:(NSURL *)fileURL directoryPath:(nullable NSString *)path;
 - (NSUInteger)addDirectoryToArchive:(NSURL *)directoryURL;
